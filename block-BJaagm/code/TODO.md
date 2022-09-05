@@ -1,19 +1,29 @@
 1. What does thread of execution means in JavaScript?
 We are executing code line by line
 2. Where the JavaScript code gets executed?
+
 First javascript program is loaded in javascript engine. As code execution starts, JavaScript creates a Global Execution Context, in which there is a specific memory section. All variables and function are stored in memory, and when it comes to execute a function, a "Function Execution Context" is formed inside the GEC, which also have a memory section. After execution of function the value is stored and the FEC is deleted and then next line is executed.
 
 
 3. What does context means in Global Execution Context?
 It means environment in which any code gets executed.
+
 4. When do you create a global execution context.
+
  It is created once when the code/program execution is started.
+
 5. Execution context consists of what all things?
+
 1st part: Where all data, functions and variables are stored. 2nd Part: Where all functions like operations and manipulation are executed.
+
 6. What are the different types of execution context?
+
 Global execution context and function execution context.
+
 7. When global and function execution context gets created?
+
  As code execution starts, JavaScript creates a "Global Execution Context" and when it comes to execute a function, a "Function Execution Context" is created.
+
 8.Function  execution gets created during function execution or while declaring a function.
  created during function execution 
 
@@ -23,6 +33,7 @@ Global execution context and function execution context.
 
 
 ```js
+
 var user = "Arya";
 
 function sayHello(){
@@ -30,15 +41,17 @@ function sayHello(){
 }
 
 var userMsg = sayHello(user);
+
 ```
 
 <!-- Put your image here -->
 
-![](./img/image-name.jpg)
+`![](./img/image-one.jpg)`
 
 
 
 ```js
+
 var marks = 400;
 var total = 500;
 
@@ -48,12 +61,15 @@ function getPercentage(amount, totalAmount){
 
 var percentageMarks = getPercentage(marks, total);
 var percentageProfit = getPercentage(400, 200);
+
+
 ```
 
 <!-- Put your image here -->
 
 ![](./img/image-name.jpg)
 
+<!-- `![](./img/image-two.jpg)` -->
 
 
 ```js
@@ -74,3 +90,4 @@ var whoAmIAgain = customeMessage(12);
 <!-- Put your image here -->
 
 ![](./img/image-name.jpg)
+<!-- `![](./img/image-three.jpg)` -->
