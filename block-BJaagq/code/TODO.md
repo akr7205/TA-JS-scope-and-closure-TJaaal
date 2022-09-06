@@ -12,9 +12,9 @@ function change() {
   console.log(species);
 }
 
-console.log(species); // 1
-change();
-console.log(species); // 2
+console.log(species); // 1 human
+change();//vampire
+console.log(species); // 2//human
 ```
 
 <!-- Put your image below -->
@@ -35,8 +35,10 @@ function topLevelFn() {
   function nestedFn() {
     var anotherLocalVar = "Local to nestedFn's scope.";
 
-    console.log(localVar); // 1
-    console.log(topLevelVar); // 2
+    console.log(localVar); // 1 This is local to topLevelFn's scope
+
+    console.log(topLevelVar); // 2 This is global scope!
+
   }
 
   nestedFn();
