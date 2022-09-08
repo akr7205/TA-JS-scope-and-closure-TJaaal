@@ -21,7 +21,8 @@ let numbersMultipliedBy5 = multiplyArrayByN(marks, multiplyBy5);
 //multiplyArrayByN is a Higher order function and addFive,multiplyBy5 is a callback function
 ```
 
-2. Create the execution context diagram of the above code snippet
+2. Create the execution context diagram of the above code snippet.
+![Getting Started](img1.jpeg)
 
 3. Write a higher order function that accepts a number and a operation function (callback function). Call the callback function passing the number as argument and return the returned value.
 
