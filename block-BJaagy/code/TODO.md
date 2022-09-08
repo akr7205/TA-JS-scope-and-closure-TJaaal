@@ -15,7 +15,12 @@ function multiply(n1, n2) {
 calculate(sum, 0, [1, 2, 4]);      // => 7
 calculate(multiply, 1, [1, 2, 4]); // => 8
 2. Create a function by you choice that returns a function reference.
-
+function multiply(){
+  return function multiply5(num){
+    retun num *5;
+  }
+}
+multiply()
 3. Create a higher order function called `map` that takes two inputs:
    - An array of numbers/string/boolean etc
    - A 'callback' function - a function that is applied to each element of the array (inside of the function 'map')
