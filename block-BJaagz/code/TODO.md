@@ -5,11 +5,16 @@
 - It should work exactly like array `forEach` method
 
 ```js
-function forEach() {}
+function forEach() {
+   arr.reduce((acc,cv,index)=>{
+   func(cv,index,arr)
+  },'')
+}
 
 forEach(['Sam', 'Jon', 'Arya'], (name, i, arr) =>
   console.log(name + name, i, arr)
 );
+
 ```
 
 2. Implement `map` array method using Array.reduce
@@ -21,6 +26,10 @@ forEach(['Sam', 'Jon', 'Arya'], (name, i, arr) =>
 ```js
 function map() {
   // Your code goes here
+   arr.reduce((acc,cv,index) =>{
+    func(cv);
+  },'')
+  
 }
 
 map(['Sam', 'Jon', 'Arya'], (name) => name + name); // ['SamSam', 'JonJon', 'AryaArya']
