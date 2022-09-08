@@ -121,6 +121,6 @@ console.log(i, 'Second'); // output
 7 'First'
 8 'First'
 9 'First'
-10 'Second'
+ReferenceError: i is not defined
 
 ```
