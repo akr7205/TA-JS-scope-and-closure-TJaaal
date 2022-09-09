@@ -5,7 +5,7 @@
 - It should work exactly like array `forEach` method
 
 ```js
-function forEach() {
+function forEach(arr,func) {
    arr.reduce((acc,cv,index)=>{
    func(cv,index,arr)
   },'')
@@ -24,11 +24,12 @@ forEach(['Sam', 'Jon', 'Arya'], (name, i, arr) =>
 - It should work exactly like array `map` method
 
 ```js
-function map() {
+function map(arr,func) {
   // Your code goes here
-   arr.reduce((acc,cv,index) =>{
-    func(cv);
-  },'')
+   return arr.reduce((acc,cv,index,arr) =>{
+       acc.push(func(cv));
+     return acc;
+  },[]);
   
 }
 
@@ -42,13 +43,14 @@ map(['Sam', 'Jon', 'Arya'], (name) => name + name); // ['SamSam', 'JonJon', 'Ary
 - It should work exactly like array `filter` method
 
 ```js
-function filter() {
+function filter(arr,func) {
   // Your code goes here
-   arr.reduce((acc,cv,index) =>{
+ return  arr.reduce((acc,cv,index) =>{
     if(cv.startsWith('S')){
-      console.log(cv)
+      acc.push(cv)
     }
-  },'');
+    return acc;
+  },[]);
 }
 filter(['Sam', 'Jon', 'Arya'], (name) =>
   name.startsWith('S')
