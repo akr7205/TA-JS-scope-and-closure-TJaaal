@@ -44,6 +44,11 @@ map(['Sam', 'Jon', 'Arya'], (name) => name + name); // ['SamSam', 'JonJon', 'Ary
 ```js
 function filter() {
   // Your code goes here
+   arr.reduce((acc,cv,index) =>{
+    if(cv.startsWith('S')){
+      console.log(cv)
+    }
+  },'');
 }
 filter(['Sam', 'Jon', 'Arya'], (name) =>
   name.startsWith('S')
