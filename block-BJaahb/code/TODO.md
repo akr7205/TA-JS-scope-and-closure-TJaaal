@@ -11,8 +11,9 @@ function outer() {
 }
 let getSum = outer();
 let num = getSum();
-```
+![Getting Started](img1.jpeg)
 
+```
 2.
 
 Create the execution context diagram for following code. Also write the output of the code below.
@@ -28,10 +29,12 @@ function getCounter() {
 
 let counter = getCounter();
 
-counter(); // output
-counter(); // output
-counter(); // output
-counter(); // output
+counter(); // output 0
+counter(); // output 1
+counter(); // output 2
+counter(); // output 3
+![Getting Started](img2.jpeg)
+
 ```
 
 3. Create the execution context diagram
