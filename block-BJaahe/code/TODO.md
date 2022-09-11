@@ -3,24 +3,35 @@
 1. Write a function, `outer` that takes an input `string`. Inside the function `outer` define another function expression named `sayHello` which alerts the `input`. `sayHello` should be call immediately after it is defined.
 
 ```js
-// Your code goes here
+function outer(str){
+  let sayHello=()=>{
+    alert(`${str} sayHello`);
+  }
+  sayHello();
+}
+outer('arun');
 ```
 
 2. Write a function `delay` that accepts two arguments, a callback and the wait for the time in milliseconds (1000 ms is 1 second). `delay` should return a function that, when invoked waits for the specified amount of time before executing. (Use setTimeout)
 
 ```js
 // Your code goes here
+
 ```
 
 3. Write a function with a closure. The first function should only take one argument, someone's last name, and return the inner function. The returned `inner` function should take one more argument, someone's first name. When inner function when called it should console.log both the first name and the last name with a space.
 
 ```js
-function lastName() {
+function lastName(lastName) {
   //  Your code goes here
+  return function lastNameLee(firstName){
+     console.log(`${firstName +' '+ lastName}`);
+  }
 }
 
 let lastNameLee = lastName('lee'); // logs nothing
 lastNameLee('Brett'); //logs 'Brett Lee'
+
 ```
 
 This function is useful in case you want to create name for multiple people with same last name.
@@ -35,6 +46,16 @@ lastNameLee('Lynne'); //logs 'Lynne Lee'
 ```js
 function storyWriter() {
   // Your code goes here
+  let sentence='';
+  return{
+    addWords:function(str){
+      sentence+=str;
+    },
+    erase:function() {
+     return sentence='';
+    }
+    
+  }
 }
 
 // Test
@@ -55,15 +76,17 @@ When `forEach` function is called it returns another function. When the returned
 
 ```js
 function forEach() {
-  // Your code goes here
-}
+  
+ }
+
 
 let next = [1, 2, 3, 4, 5];
 next(); // 1
 next(); // 2
 next(); // 3
 next(); // 4
-next(); // 5
+next(); // 5 
+
 ```
 
 6. Create a function named `addDesignation` which accepts a `title` and returns another function.
@@ -90,8 +113,20 @@ manager('Head'); // Head Manager
 - `current` will return the current salary returns the updated salary
 
 ```js
-function changeSalary() {
-  // Your code goes here
+function changeSalary(currentSalary) {
+  return{
+    raise:function(){
+     return currentSalary+=500;
+      },
+  lower:function(){
+     return currentSalary-=500;
+      },
+  current:function(){
+    return currentSalary;
+  }
+
+  }
+  
 }
 
 let sam = changeSalary(2000);
@@ -109,6 +144,22 @@ arya.lower(); // 3500
 
 ```js
 // Your code goes here
+function nameFactory(firstName,lastName){
+return{
+getFullName:function(){
+return `${firstName +' '+ lastName}`
+},
+setFirstName:function(firstName){
+return `${firstName +' '+ lastName}`
+
+},
+setLastName:function(lastName){
+return `${firstName +' '+ lastName}`
+
+}
+}
+
+}
 
 let arya = nameFactory('Arya', 'Stark');
 arya.getFullName(); // "Arya Stark"
@@ -121,8 +172,13 @@ arya.setLastName('Lannister'); // "Jon Lannister"
 The returned function accepts a string (children) and returns the children with the tag you passed.
 
 ```js
-function createTag() {
+function createTag(element) {
   // your code goes here
+  let tag=document.createElement(`${element}`)
+   return function(message){
+     tag.innerHTML=`${message}`;
+  }
+   console.log(tag);
 }
 
 let bold = createTag('b');
