@@ -5,7 +5,7 @@
 ```js
 function outer(str){
   let sayHello=()=>{
-    alert(`${str} sayHello`);
+    alert(`${str}`);
   }
   sayHello();
 }
@@ -16,7 +16,13 @@ outer('arun');
 
 ```js
 // Your code goes here
-
+function delay(cb,ms){
+  return function(){
+    setTimeout(cb,ms);
+  }
+}
+let time=delay(() => console.log('Hello World'),5000)
+time();
 ```
 
 3. Write a function with a closure. The first function should only take one argument, someone's last name, and return the inner function. The returned `inner` function should take one more argument, someone's first name. When inner function when called it should console.log both the first name and the last name with a space.
@@ -75,12 +81,14 @@ storyOfMyLife.erase(); // ''
 When `forEach` function is called it returns another function. When the returned function is called it returns the element from the array at specific index. Every time you call the returned function the value of index should increment.
 
 ```js
-function forEach() {
-  
+function forEach(arr) {
+  let index=0;
+  return function(){
+    return arr[index++];
+  }
  }
+let next =forEach([1, 2, 3, 4, 5]);
 
-
-let next = [1, 2, 3, 4, 5];
 next(); // 1
 next(); // 2
 next(); // 3
@@ -96,6 +104,9 @@ The returned function accepts a string `prefix` and returns `prefix` and `title`
 ```js
 function addDesignation(title) {
   // your code goes here
+  return function(prefix){
+    return `${prefix} ${title}`
+  }
 }
 
 let sales = addDesignation('Salesman');
@@ -144,16 +155,19 @@ arya.lower(); // 3500
 
 ```js
 // Your code goes here
+// Your code goes here
 function nameFactory(firstName,lastName){
 return{
-getFullName:function(){
+getFullName:function(fn){
+  firstName=fn;
 return `${firstName +' '+ lastName}`
 },
 setFirstName:function(firstName){
 return `${firstName +' '+ lastName}`
 
 },
-setLastName:function(lastName){
+setLastName:function(ln){
+  lastName=ln;
 return `${firstName +' '+ lastName}`
 
 }
