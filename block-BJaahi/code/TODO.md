@@ -60,8 +60,21 @@ function sayHello(name) {
 let message = sayHello(username);
 var nextMessage = sayHello('Test');
 ```
-
 <!-- Answer -->
+// Declaration Phase
+var username;
+let number;
+function sayHello(name) {
+  return `Hello ${name}`;
+}
+let message;
+let nextMessage;
+// Execution Phase
+
+username='Arya';
+number=21;
+message = sayHello(username);
+nextMessage = sayHello('Test');
 
 ```js
 // Your code goes here
@@ -105,6 +118,20 @@ var nextMessage = sayHello('Test');
 ```
 
 <!-- Answer -->
+//Declaration Phase
+let username;
+let number;
+let message;
+let sayHello;
+var nextMessage=undefined;
+//Execution Phase
+username = 'Arya'
+number = 21;
+message = sayHello(username)
+let sayHello = function (name) {
+  return `Hello ${name}`;
+};
+nextMessage = sayHello('Test')
 
 ```js
 // Your code goes here
@@ -120,7 +147,12 @@ let age = 21;
 ```
 
 <!-- Answer -->
-
+//Declaration Phase
+var name
+let age
+//Execution Phase
+console.log(name);
+console.log(age);
 ```js
 // Your code goes here
 ```
@@ -137,7 +169,13 @@ function sayHi(name) {
 
 sayHi();
 ```
-
+//Declaration Phase
+sayHi=function
+//Execution Phase
+console.log(name);
+  console.log(age);
+  var name = 'Lydia';
+  let age = 21;
 <!-- Answer -->
 
 ```js
@@ -175,7 +213,7 @@ let sayHi = function sayHi(name) {
 ```
 
 <!-- Answer -->
-
+ReferenceError: Cannot access 'sayHi' before initialization
 ```js
 // Your code goes here
 ```
@@ -188,7 +226,15 @@ console.log(sum);
 var sum = num1 + num2;
 let num2 = 30;
 ```
-
+//declaration phase
+let num1;
+var sum=undefined;
+let num2;
+//Execution Phase
+num1=21;
+console.log(sum);
+sum = num1 + num2
+num2 = 30
 <!-- Answer -->
 
 ```js
@@ -214,6 +260,20 @@ let sum = add(num1, num2, 4, 5, 6);
 ```
 
 <!-- Answer -->
+//declaration Phase
+var num1;
+let sum2
+let add;
+addAgain()
+let num2;
+let sum;
+//Execution Phase
+num1=21;
+sum2 = addAgain(num1, num2, 4, 5, 6)
+add = (a, b, c, d, e) => {
+  return a + b + c + d + e;
+};
+sum = add(num1, num2, 4, 5, 6);
 
 ```js
 // Your code goes here
@@ -224,6 +284,7 @@ let sum = add(num1, num2, 4, 5, 6);
 ```js
 function test(a) {
   let num1 = 21;
+  let num1 = 21;
   return add(a, num1);
 }
 
@@ -233,6 +294,14 @@ let add = (a, b) => {
   return a + b;
 };
 ```
+//declaration phase
+test()
+let sum
+let add
+//Execution Phase
+sum = test(100)
+  let num1 = 21;
+  return add(a, num1);
 
 <!-- Answer -->
 
@@ -256,7 +325,13 @@ function add(a, b) {
 ```
 
 <!-- Answer -->
-
+//declaration Phase
+test()
+add()
+//Execution Phase
+sum=test(100)
+let num1 = 21;
+  return add(a, num1);
 ```js
 // Your code goes here
 ```
