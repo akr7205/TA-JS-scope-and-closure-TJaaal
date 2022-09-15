@@ -10,8 +10,12 @@
 **You can use normal for loop for this function**
 
 ```js
-function loop() {
+
+function loop(start,test,update,body) {
   // Your code goes here
+  for(let i=start;test(i);i=update(i)){
+     body(i);
+  }
 }
 
 loop(
@@ -20,6 +24,7 @@ loop(
   (n) => n - 1,
   console.log
 );
+
 // → 3
 // → 2
 // → 1
@@ -30,9 +35,14 @@ loop(
 Here's how it works. The function has an "accumulator value" which starts as the `initialValue` and accumulates the output of each loop. The array is iterated over, passing the accumulator and the next array element as arguments to the `callback`. The callback's return value becomes the new accumulator value. The next loop executes with this new accumulator value. In the example above, the accumulator begins at 0. `add(0,4)` is called. The accumulator's value is now 4. Then `add(4, 1)` to make it 5. Finally `add(5, 3)` brings it to 8, which is returned.
 
 ```js
-function reduce(array, callback, initialValue) {}
+function reduce(array, callback, initialValue) {
+  let total=initialValue;
+  for(let number of array){
+    total=callback(total,number)
+}
+  return total;
 
-// Test
+}
 var nums = [4, 1, 3];
 var add = function (a, b) {
   return a + b;
@@ -43,7 +53,18 @@ reduce(nums, add, 0); //-> 8
 3. Construct a function intersection that compares input arrays and returns a new array with elements found in all of the inputs.
 
 ```js
-function intersection(arrays) {}
+function intersection(...arrays) {
+  // console.log(arrays)
+  let first=arrays[0];
+  console.log(first,'hi');
+  for(let i=1;i<arrays.length;i++){
+    let second=arrays[i];
+    // console.log(second);
+    first=first.filter(elm => second.includes(elm));
+    // console.log(first);
+  }
+  return first;
+}
 
 // Test
 console.log(
@@ -58,7 +79,18 @@ console.log(
 4. Construct a function `union` that compares input arrays and returns a new array that contains all elements. If there are duplicate elements, only add it once to the new array. Preserve the order of the elements starting from the first element of the first input array.
 
 ```js
-function union(arrays) {}
+function union(...arrays) {
+  // console.log(arrays)
+  let first=arrays[0];
+  // console.log(first,'hi');
+  for(let i=1;i<arrays.length;i++){
+    let second=arrays[i];
+    // console.log(second);
+    first=first.filter(elm => !second.includes(elm)).concat(second);
+    // console.log(first);
+  }
+  return first;
+}
 
 // Test
 console.log(
