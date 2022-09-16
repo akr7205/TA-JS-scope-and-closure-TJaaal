@@ -29,14 +29,21 @@ The returned function either accepts two parameter or one parameter.
 
 ```js
 function multipleCensor() {
-  return function(a,b){
-    if(a && b){
-      return;
-    } else{
-      return a;
-    }
+ let words=[];
+ return function(...params){
+   if(params.length === 1){
+     let quote=params[0];
+     words.forEach((pair) =>{
+       quote=quote.replace(pair[0],pair[1])
+     })
+    return quote;
+   }
+   else if(params.length === 2){
+     words.push(params);
+     // console.log(words)
+   }
+ }
 
-  }
 }
 
 let censorQuote = multipleCensor();
@@ -61,23 +68,15 @@ The returned function accepts one parameter.
 
 ```js
 function createCache(cb,pw) {
- let cache=[]
-  return function(para){
-    if(typeof para === 'number'){
-    // console.log(typeof para)
-      cache.push(para)
-      return cb(para);
-    }else if(para === pw){
-      console.log(cache)
-  return cache.reduce((acc,cv,index) =>{
-     acc[cache[index]]=cb(cache[index]);
-    console.log(acc);
-    return acc;
-    },{})
-
-    }
-
+ let obj={};
+ return function(param){
+  if(param !=pw){
+    obj[param]=cb(param);
+    return cb(param);
+  }else{
+    return obj;
   }
+ }
 }
 
 function add10(num) {
@@ -97,25 +96,20 @@ addCache('foo'); // {12: 22, 100: 110, 1: 11}
 
 ```js
 function createCache(cb,pw){
-  let cache=[]
-  return function(para){
-    if(typeof para === 'number'){
-    // console.log(typeof para)
-    if(!cache.includes(para)){
-      cache.push(para)
+let obj={};
+ return function(param){
+  if(param !=pw){
+    if(obj[param]){
+      // console.log('same object')
+      return obj[param]
+    }else{
+    obj[param]=cb(param);
+    return cb(param);
     }
-      return cb(para);
-    }else if(para === pw){
-      console.log(cache)
-  return cache.reduce((acc,cv,index) =>{
-     acc[cache[index]]=cb(cache[index]);
-    console.log(acc);
-    return acc;
-    },{})
-
-    }
-
+  }else{
+    return obj;
   }
+ }
 }
 
 function add10(num) {
