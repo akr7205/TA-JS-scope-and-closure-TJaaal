@@ -6,7 +6,11 @@ The returned function accepts a sentence. If the sentence contains the `fromWord
 
 ```js
 function censor(fromWord, toWord) {
-  //  Your code goes here
+  retrun function(sentence){
+   if(sentence.includes(fromWord)){
+  return  sentence.replace(fromWord,toWord)
+   }
+  }
 }
 
 let censorSentence = censor('World', 'Sam');
@@ -25,7 +29,14 @@ The returned function either accepts two parameter or one parameter.
 
 ```js
 function multipleCensor() {
-  //  Your code goes here
+  return function(a,b){
+    if(a && b){
+      return;
+    } else{
+      return a;
+    }
+
+  }
 }
 
 let censorQuote = multipleCensor();
@@ -49,8 +60,24 @@ The returned function accepts one parameter.
 - If the parameter is the same as the password it will return the object in which we stored the values.
 
 ```js
-function createCache() {
-  // Your code goes here
+function createCache(cb,pw) {
+ let cache=[]
+  return function(para){
+    if(typeof para === 'number'){
+    // console.log(typeof para)
+      cache.push(para)
+      return cb(para);
+    }else if(para === pw){
+      console.log(cache)
+  return cache.reduce((acc,cv,index) =>{
+     acc[cache[index]]=cb(cache[index]);
+    console.log(acc);
+    return acc;
+    },{})
+
+    }
+
+  }
 }
 
 function add10(num) {
@@ -69,8 +96,26 @@ addCache('foo'); // {12: 22, 100: 110, 1: 11}
 4. Change the above function in such a way that when the returned function is called with any other value than password. It should first check the object where we are storing the argument and return value. If the key is present return the value form the object itself. Otherwise call the callback function with the parameter.
 
 ```js
-function createCache() {
-  // Your code goes here
+function createCache(cb,pw){
+  let cache=[]
+  return function(para){
+    if(typeof para === 'number'){
+    // console.log(typeof para)
+    if(!cache.includes(para)){
+      cache.push(para)
+    }
+      return cb(para);
+    }else if(para === pw){
+      console.log(cache)
+  return cache.reduce((acc,cv,index) =>{
+     acc[cache[index]]=cb(cache[index]);
+    console.log(acc);
+    return acc;
+    },{})
+
+    }
+
+  }
 }
 
 function add10(num) {
